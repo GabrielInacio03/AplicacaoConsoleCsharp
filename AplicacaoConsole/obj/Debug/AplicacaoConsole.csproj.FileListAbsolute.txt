@@ -1,0 +1,7 @@
+C:\Users\02471\Desktop\Inacio\AplicacaoConsole\AplicacaoConsole\bin\Debug\AplicacaoConsole.exe.config
+C:\Users\02471\Desktop\Inacio\AplicacaoConsole\AplicacaoConsole\bin\Debug\AplicacaoConsole.exe
+C:\Users\02471\Desktop\Inacio\AplicacaoConsole\AplicacaoConsole\bin\Debug\AplicacaoConsole.pdb
+C:\Users\02471\Desktop\Inacio\AplicacaoConsole\AplicacaoConsole\obj\Debug\AplicacaoConsole.csprojAssemblyReference.cache
+C:\Users\02471\Desktop\Inacio\AplicacaoConsole\AplicacaoConsole\obj\Debug\AplicacaoConsole.csproj.CoreCompileInputs.cache
+C:\Users\02471\Desktop\Inacio\AplicacaoConsole\AplicacaoConsole\obj\Debug\AplicacaoConsole.exe
+C:\Users\02471\Desktop\Inacio\AplicacaoConsole\AplicacaoConsole\obj\Debug\AplicacaoConsole.pdb
