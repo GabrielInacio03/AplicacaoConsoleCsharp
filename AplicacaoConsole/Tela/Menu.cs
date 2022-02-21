@@ -12,12 +12,7 @@ namespace AplicacaoConsole.Tela
     public class Menu
     {
         public const int SAIDA_PROGRAMA = 0;
-        /*        
-        public const int LER_ARQUIVO = 1;
-        public const int TABUADA = 2;
-        public const int CALCULO_MEDIA = 3;
-        */
-
+      
         public static void Monstrar()
         {
             while (true)
@@ -65,6 +60,7 @@ namespace AplicacaoConsole.Tela
                         break;
                     default:
                         Console.WriteLine("A opção digitada não é válida");
+                        Console.WriteLine("==================================================");
                         break;
                 }
 
