@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,13 @@ namespace AplicacaoConsole.LerArquivo
 {
     public class Arquivo
     {
+        private static string CaminhoArquivo()
+        {
+            return ConfigurationManager.AppSettings["caminho_arquivos"];
+        }
         public static void Ler(int numeroArquivo)
         {
-            string arquivoComCaminho = @"C:\Users\02471\Documents\arquivos\arq" + numeroArquivo + ".txt";
+            string arquivoComCaminho = CaminhoArquivo() + "arq" + numeroArquivo + ".txt";
             if (File.Exists(arquivoComCaminho))
             {
                 using (StreamReader arquivo = File.OpenText(arquivoComCaminho))
@@ -24,7 +29,7 @@ namespace AplicacaoConsole.LerArquivo
                 }
             }
 
-            string arquivoCaminho2 = @"C:\arquivos\arq" + (numeroArquivo + 1) + ".txt";
+            string arquivoCaminho2 = CaminhoArquivo() + "arq" + numeroArquivo + ".txt";
             if (File.Exists(arquivoCaminho2))
             {
                 Ler(numeroArquivo + 1);
