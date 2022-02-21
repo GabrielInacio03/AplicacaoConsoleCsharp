@@ -24,7 +24,19 @@ namespace AplicacaoConsole.Classes
 
         public void Gravar()
         {
-            //TODO Implementar
+            var clientes = Cliente.LerClientes();
+            clientes.Add(this);
+
+            if (File.Exists(CaminhoBaseClientes()))
+            {
+                string conteudo = "nome;telefone;cpf;"
+                +"\n";
+                foreach (Cliente c in clientes)
+                {
+                    conteudo += c.Nome + ";" + c.Telefone + ";" + c.Cpf + ";\n";
+                }
+                File.WriteAllText(CaminhoBaseClientes(), conteudo);
+            }
         }
         private static string CaminhoBaseClientes()
         {
@@ -44,11 +56,8 @@ namespace AplicacaoConsole.Classes
                         i++;
                         if (i == 1) continue;
                         var clienteArquivo = linha.Split(';');
-                        var cliente = new Cliente();
-                        cliente.Nome = clienteArquivo[0];
-                        cliente.Telefone = clienteArquivo[1];
-                        cliente.Cpf = clienteArquivo[2];
-
+                        var cliente = new Cliente { Nome = clienteArquivo[0], Telefone = clienteArquivo[1], Cpf = clienteArquivo[2] };
+                     
                         clientes.Add(cliente);
                     }
                 }

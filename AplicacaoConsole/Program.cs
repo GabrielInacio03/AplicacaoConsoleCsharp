@@ -20,16 +20,11 @@ namespace AplicacaoConsole
             var clientes = Cliente.LerClientes();
             foreach (var item in clientes)
             {
-                Console.WriteLine(item.Nome +" | "+ item.Telefone +" | "+ item.Cpf);
+                Console.WriteLine(item.Nome + " | " + item.Telefone + " | " + item.Cpf);
+
             }
-
-            Cliente cliente2 = new Cliente("Guilherme","93489843", "2342289");
-
-            Console.WriteLine();
-            Console.WriteLine("Testando nosso construtor: ");
-
-            Console.WriteLine(cliente2.Nome +" - "+ cliente2.Telefone +" - "+ cliente2.Cpf);
-
+            var gravando = new Cliente { Nome = "Teste", Telefone = "22323232", Cpf = "224335432"};
+            gravando.Gravar();
             Console.ReadLine();
         }
     }
