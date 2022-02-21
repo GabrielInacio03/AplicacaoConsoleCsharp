@@ -23,12 +23,12 @@ namespace AplicacaoConsole
                 Console.WriteLine(item.Nome +" | "+ item.Telefone +" | "+ item.Cpf);
             }
 
-            //var cliente = new Cliente();
-            //cliente.Nome = "João";
-            //cliente.Telefone = "124444123";
-            //cliente.Cpf = "2343920";
+            Cliente cliente2 = new Cliente("Guilherme","93489843", "2342289");
 
-            //cliente.Gravar();
+            Console.WriteLine();
+            Console.WriteLine("Testando nosso construtor: ");
+
+            Console.WriteLine(cliente2.Nome +" - "+ cliente2.Telefone +" - "+ cliente2.Cpf);
 
             Console.ReadLine();
         }

@@ -14,6 +14,13 @@ namespace AplicacaoConsole.Classes
         public string Telefone { get; set; }
         public string Cpf { get; set; }
 
+        public Cliente() { } //construtor vazio - padrão
+        public Cliente(string nome, string telefone, string cpf)
+        {
+            this.Nome = nome;
+            this.Telefone = telefone;
+            this.Cpf = cpf;
+        }
 
         public void Gravar()
         {
