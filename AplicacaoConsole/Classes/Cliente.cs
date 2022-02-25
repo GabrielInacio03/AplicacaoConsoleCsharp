@@ -11,6 +11,7 @@ namespace AplicacaoConsole.Classes
     public class Cliente
     {
         public string Nome { get; set; }
+        public string SobreNome { get; set; }
         public string Telefone { get; set; }
         public string Cpf { get; set; }
 
@@ -24,6 +25,7 @@ namespace AplicacaoConsole.Classes
 
         public void Gravar()
         {
+            this.Olhar();
             var clientes = Cliente.LerClientes();
             clientes.Add(this);
 
@@ -37,6 +39,10 @@ namespace AplicacaoConsole.Classes
                 }
                 File.WriteAllText(CaminhoBaseClientes(), conteudo);
             }
+        }
+        private void Olhar()
+        {
+            Console.WriteLine("O cliente "+ this.Nome +" "+ this.SobreNome +" está olhando para mim");
         }
         private static string CaminhoBaseClientes()
         {

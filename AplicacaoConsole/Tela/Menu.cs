@@ -1,6 +1,7 @@
 ﻿using AplicacaoConsole.Calculo;
 using AplicacaoConsole.LerArquivo;
 using AplicacaoConsole.LerTabuada;
+using AplicacaoConsole.Tela;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace AplicacaoConsole.Tela
     public class Menu
     {
         public const int SAIDA_PROGRAMA = 0;
+        public const int CADASTRAR_CLIENTES = 1;
       
         public static void Monstrar()
         {
@@ -22,7 +24,8 @@ namespace AplicacaoConsole.Tela
                     "\n0 - Sair do Programa" +
                     "\n1 - Para Ler Arquivos" +
                     "\n2 - Para Executar a Tabuada" +
-                    "\n3 - Para Calcular Média de alunos";
+                    "\n3 - Para Calcular Média de alunos" +
+                    "\n4 - Cadastrar Clientes";
 
                 Console.WriteLine(mensagem);
                 int valor = int.Parse(Console.ReadLine());
@@ -58,8 +61,14 @@ namespace AplicacaoConsole.Tela
                         Console.WriteLine("==================================================");
 
                         break;
+                    case 4:
+                        Console.WriteLine("========== Cadastro de Clientes ==========");
+                        break;
                     default:
                         Console.WriteLine("A opção digitada não é válida");
+
+                        TelaCliente.Chamar();
+
                         Console.WriteLine("==================================================");
                         break;
                 }
@@ -67,7 +76,7 @@ namespace AplicacaoConsole.Tela
                 if (SAIDA_PROGRAMA == valor)
                 {
                     break;
-                }
+                } 
             }
         }
     }

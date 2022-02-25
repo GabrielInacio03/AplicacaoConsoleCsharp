@@ -16,15 +16,8 @@ namespace AplicacaoConsole
     {        
         static void Main(string[] args)
         {
-            //Menu.Monstrar();
-            var clientes = Cliente.LerClientes();
-            foreach (var item in clientes)
-            {
-                Console.WriteLine(item.Nome + " | " + item.Telefone + " | " + item.Cpf);
-
-            }
-            var gravando = new Cliente { Nome = "Teste", Telefone = "22323232", Cpf = "224335432"};
-            gravando.Gravar();
+            Menu.Monstrar();
+            
             Console.ReadLine();
         }
     }
