@@ -26,19 +26,40 @@ namespace AplicacaoConsole.Classes
         public void Gravar()
         {
             this.Olhar();
-            var clientes = Cliente.LerClientes();
-            clientes.Add(this);
 
-            if (File.Exists(CaminhoBaseClientes()))
+            if (this.GetType() == typeof(Cliente))
             {
-                string conteudo = "nome;telefone;cpf;"
-                +"\n";
-                foreach (Cliente c in clientes)
+                var clientes = Cliente.LerClientes();
+                clientes.Add(this);
+
+                if (File.Exists(CaminhoBaseClientes()))
                 {
-                    conteudo += c.Nome + ";" + c.Telefone + ";" + c.Cpf + ";\n";
+                    string conteudo = "nome;telefone;cpf;"
+                    + "\n";
+                    foreach (Cliente c in clientes)
+                    {
+                        conteudo += c.Nome + ";" + c.Telefone + ";" + c.Cpf + ";\n";
+                    }
+                    File.WriteAllText(CaminhoBaseClientes(), conteudo);
                 }
-                File.WriteAllText(CaminhoBaseClientes(), conteudo);
             }
+            else
+            {
+                var usuarios = Usuario.LerClientes();
+                usuarios.Add(this);
+
+                if (File.Exists(CaminhoBaseUsuarios()))
+                {
+                    string conteudo = "nome;telefone;cpf;"
+                    + "\n";
+                    foreach (Usuario c in usuarios)
+                    {
+                        conteudo += c.Nome + ";" + c.Telefone + ";" + c.Cpf + ";\n";
+                    }
+                    File.WriteAllText(CaminhoBaseUsuarios(), conteudo);
+                }
+            }
+            
         }
         private void Olhar()
         {
@@ -47,6 +68,32 @@ namespace AplicacaoConsole.Classes
         private static string CaminhoBaseClientes()
         {
             return ConfigurationManager.AppSettings["base_dos_clientes"];
+        }
+        private static string CaminhoBaseUsuarios()
+        {
+            return ConfigurationManager.AppSettings["base_dos_usuarios"];
+        }
+        public static List<Usuario> LerUsuarios()
+        {
+            var usuarios = new List<Usuario>();
+            if (File.Exists(CaminhoBaseUsuarios()))
+            {
+                using (StreamReader arquivo = File.OpenText(CaminhoBaseUsuarios()))
+                {
+                    string linha;
+                    int i = 0;
+                    while((linha = arquivo.ReadLine()) != null)
+                    {
+                        i++;
+                        if (i == 1) continue;
+                        var usuarioArquivo = linha.Split(';');
+                        var usuario = new Usuario { Nome = usuarioArquivo[0], Telefone = usuarioArquivo[1], Cpf = usuarioArquivo[2] };
+
+                        usuarios.Add(usuario);
+                    }
+                }
+            }
+            return usuarios;
         }
         public static List<Cliente> LerClientes()
         {

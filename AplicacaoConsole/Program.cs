@@ -17,7 +17,13 @@ namespace AplicacaoConsole
         static void Main(string[] args)
         {
             Menu.Monstrar();
+
+            //teste
+            Usuario u = new Usuario { Nome = "Teste", Telefone = "32223714", Cpf = "23323242"};
+
+            u.Gravar();
             
+
             Console.ReadLine();
         }
     }
