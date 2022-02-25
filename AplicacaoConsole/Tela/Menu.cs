@@ -25,7 +25,8 @@ namespace AplicacaoConsole.Tela
                     "\n1 - Para Ler Arquivos" +
                     "\n2 - Para Executar a Tabuada" +
                     "\n3 - Para Calcular Média de alunos" +
-                    "\n4 - Cadastrar Clientes";
+                    "\n4 - Cadastrar Clientes" +
+                    "\n5 - Cadastrar Usuários";
 
                 Console.WriteLine(mensagem);
                 int valor = int.Parse(Console.ReadLine());
@@ -65,6 +66,10 @@ namespace AplicacaoConsole.Tela
                         Console.WriteLine("========== Cadastro de Clientes ==========");
 
                         TelaCliente.Chamar();
+                        break;
+                    case 5:
+                        Console.WriteLine("========== Cadastro de Usuários ==========");
+                        TelaUsuario.Chamar();
                         break;
                     default:
                         Console.WriteLine("A opção digitada não é válida");                        

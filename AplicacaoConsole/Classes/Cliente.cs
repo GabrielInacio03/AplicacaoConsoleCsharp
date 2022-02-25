@@ -27,36 +27,40 @@ namespace AplicacaoConsole.Classes
         {
             this.Olhar();
 
-            if (this.GetType() == typeof(Cliente))
+            if(this.GetType() == typeof(Cliente))
             {
                 var clientes = Cliente.LerClientes();
                 clientes.Add(this);
 
                 if (File.Exists(CaminhoBaseClientes()))
                 {
-                    string conteudo = "nome;telefone;cpf;"
-                    + "\n";
+                    StreamWriter r = new StreamWriter(CaminhoBaseClientes());
+                    r.WriteLine("nome;telefone;cpf");
+
                     foreach (Cliente c in clientes)
                     {
-                        conteudo += c.Nome + ";" + c.Telefone + ";" + c.Cpf + ";\n";
+                        var linha = c.Nome +";"+ c.Telefone +";"+ c.Cpf +";";
+                        r.WriteLine(linha);
                     }
-                    File.WriteAllText(CaminhoBaseClientes(), conteudo);
+                    r.Close();
                 }
             }
             else
             {
-                var usuarios = Usuario.LerClientes();
-                usuarios.Add(this);
+                var usuarios = Usuario.LerUsuarios();
+                usuarios.Add((Usuario)this);
 
                 if (File.Exists(CaminhoBaseUsuarios()))
                 {
-                    string conteudo = "nome;telefone;cpf;"
-                    + "\n";
+                    StreamWriter r = new StreamWriter(CaminhoBaseUsuarios());
+                    r.WriteLine("nome;telefone;cpf");
+
                     foreach (Usuario c in usuarios)
                     {
-                        conteudo += c.Nome + ";" + c.Telefone + ";" + c.Cpf + ";\n";
+                        var linha = c.Nome + ";" + c.Telefone + ";" + c.Cpf + ";";
+                        r.WriteLine(linha);
                     }
-                    File.WriteAllText(CaminhoBaseUsuarios(), conteudo);
+                    r.Close();
                 }
             }
             

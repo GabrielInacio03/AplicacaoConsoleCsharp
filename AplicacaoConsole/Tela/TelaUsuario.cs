@@ -7,18 +7,17 @@ using System.Threading.Tasks;
 
 namespace AplicacaoConsole.Tela
 {
-    public class TelaCliente
+    public class TelaUsuario
     {
         public static void Chamar()
         {
             while (true)
             {
                 string mensagem = "Olá usuário, bem-vindo ao program, utilizando programação funcional" +
-                    "\nFaça o cadastro ou a listagem do cliente" +
-                    "\nDigite uma das opções abaixo:" +
+                    "\nFaça o cadastro ou a listagem do usuário" +
                     "\n0 - Sair do Cadastro" +
-                    "\n1 - Cadastrar Cliente" +
-                    "\n2 - Listar Clientes";
+                    "\n1 - Cadastrar Usuário" +
+                    "\n2 - Listar Usuários";
 
                 Console.WriteLine(mensagem);
                 int valor = int.Parse(Console.ReadLine());
@@ -26,10 +25,10 @@ namespace AplicacaoConsole.Tela
                 if(valor == 0)
                 {
                     break;
-                } 
+                }
                 else if (valor == 1)
                 {
-                    // cadastrar o cliente
+                    // cadastrar o usuário
                     Console.WriteLine("Cadastrando...");
 
                     Console.WriteLine("Nome: ");
@@ -39,32 +38,20 @@ namespace AplicacaoConsole.Tela
                     Console.WriteLine("Cpf: ");
                     string cpf = Console.ReadLine();
 
-                    var gravando = new Cliente { Nome = nome, Telefone = telefone, Cpf = cpf };
+                    var gravando = new Usuario { Nome = nome, Telefone = telefone, Cpf = cpf };
                     gravando.Gravar();
-                }
-                else if(valor == 2)
+                } 
+                else if (valor == 2)
                 {
-                    // listar clientes
-                    var clientes = Cliente.LerClientes();
-                    foreach (var item in clientes)
+                    // listar usuários
+                    var usuarios = Usuario.LerUsuarios();
+                    foreach (var item in usuarios)
                     {
                         Console.WriteLine(item.Nome + " | " + item.Telefone + " | " + item.Cpf);
 
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Erro. Opção inválida");
-                    break;
-                }
-
-                
-                
-
-                Console.WriteLine("=================================================");
-
             }
-
         }
     }
 }
