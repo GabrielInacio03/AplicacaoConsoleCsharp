@@ -63,12 +63,11 @@ namespace AplicacaoConsole.Tela
                         break;
                     case 4:
                         Console.WriteLine("========== Cadastro de Clientes ==========");
-                        break;
-                    default:
-                        Console.WriteLine("A opção digitada não é válida");
 
                         TelaCliente.Chamar();
-
+                        break;
+                    default:
+                        Console.WriteLine("A opção digitada não é válida");                        
                         Console.WriteLine("==================================================");
                         break;
                 }
