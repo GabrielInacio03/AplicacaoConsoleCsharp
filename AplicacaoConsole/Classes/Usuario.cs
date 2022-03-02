@@ -68,7 +68,8 @@ namespace AplicacaoConsole.Classes
         }
         public override void Olhar()
         {
-            base.Olhar(); //retorna o dado original
+            // base.Olhar(); //retorna o dado original
+            Console.WriteLine("O cliente " + this.Nome + " " + this.SobreNome + " está olhando para mim");
         }
     }
 }
