@@ -45,7 +45,7 @@ namespace AplicacaoConsole.Tela
                 else if(valor == 2)
                 {
                     // listar clientes
-                    var clientes = Cliente.LerClientes();
+                    var clientes = Cliente.Ler();
                     foreach (var item in clientes)
                     {
                         Console.WriteLine(item.Nome + " | " + item.Telefone + " | " + item.Cpf);

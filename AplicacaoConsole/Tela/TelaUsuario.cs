@@ -33,9 +33,11 @@ namespace AplicacaoConsole.Tela
 
                     Console.WriteLine("Nome: ");
                     string nome = Console.ReadLine();
+
                     Console.WriteLine("Telefone: ");
                     string telefone = Console.ReadLine();
-                    Console.WriteLine("Cpf: ");
+
+                    Console.WriteLine("CPF: ");
                     string cpf = Console.ReadLine();
 
                     var gravando = new Usuario { Nome = nome, Telefone = telefone, Cpf = cpf };
@@ -44,7 +46,7 @@ namespace AplicacaoConsole.Tela
                 else if (valor == 2)
                 {
                     // listar usuários
-                    var usuarios = Usuario.LerUsuarios();
+                    var usuarios = Usuario.Ler();
                     foreach (var item in usuarios)
                     {
                         Console.WriteLine(item.Nome + " | " + item.Telefone + " | " + item.Cpf);

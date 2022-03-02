@@ -17,16 +17,19 @@ namespace AplicacaoConsole.Classes
             this.Telefone = telefone;
             this.Cpf = cpf;
         }
-        public void Gravar()
+        //new -> força a sobreescrita
+        //override -> sobreescreve
+        //sealed -> a classe no pode ser sobreescrita
+        public override void Gravar()
         {
             this.Olhar();
 
-            var usuarios = Usuario.LerUsuarios();
+            var usuarios = Usuario.Ler();
             usuarios.Add((Usuario)this);
 
-            if (File.Exists(CaminhoBaseUsuarios()))
+            if (File.Exists(CaminhoBase()))
             {
-                StreamWriter r = new StreamWriter(CaminhoBaseUsuarios());
+                StreamWriter r = new StreamWriter(CaminhoBase());
                 r.WriteLine("nome;telefone;cpf");
 
                 foreach (Usuario c in usuarios)
@@ -37,16 +40,16 @@ namespace AplicacaoConsole.Classes
                 r.Close();
             }
         }
-        private static string CaminhoBaseUsuarios()
+        private static string CaminhoBase()
         {
             return ConfigurationManager.AppSettings["base_dos_usuarios"];
         }
-        public static List<Usuario> LerUsuarios()
+        public static List<Usuario> Ler()
         {
             var usuarios = new List<Usuario>();
-            if (File.Exists(CaminhoBaseUsuarios()))
+            if (File.Exists(CaminhoBase()))
             {
-                using (StreamReader arquivo = File.OpenText(CaminhoBaseUsuarios()))
+                using (StreamReader arquivo = File.OpenText(CaminhoBase()))
                 {
                     string linha;
                     int i = 0;
@@ -63,9 +66,9 @@ namespace AplicacaoConsole.Classes
             }
             return usuarios;
         }
-        private void Olhar()
+        public override void Olhar()
         {
-            Console.WriteLine("O cliente " + this.Nome + " " + this.SobreNome + " está olhando para mim");
+            base.Olhar(); //retorna o dado original
         }
     }
 }

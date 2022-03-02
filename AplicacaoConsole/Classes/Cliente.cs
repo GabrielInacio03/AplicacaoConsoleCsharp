@@ -23,17 +23,17 @@ namespace AplicacaoConsole.Classes
             this.Cpf = cpf;
         }
 
-        public void Gravar()
+        public virtual void Gravar()
         {
             this.Olhar();
 
            
-            var clientes = Cliente.LerClientes();
+            var clientes = Cliente.Ler();
             clientes.Add(this);
 
-            if (File.Exists(CaminhoBaseClientes()))
+            if (File.Exists(CaminhoBase()))
             {
-                StreamWriter r = new StreamWriter(CaminhoBaseClientes());
+                StreamWriter r = new StreamWriter(CaminhoBase());
                 r.WriteLine("nome;telefone;cpf");
 
                 foreach (Cliente c in clientes)
@@ -47,21 +47,21 @@ namespace AplicacaoConsole.Classes
            
             
         }
-        private void Olhar()
+        public virtual void Olhar()
         {
             Console.WriteLine("O cliente "+ this.Nome +" "+ this.SobreNome +" está olhando para mim");
         }
-        private static string CaminhoBaseClientes()
+        private static string CaminhoBase()
         {
             return ConfigurationManager.AppSettings["base_dos_clientes"];
         }        
         
-        public static List<Cliente> LerClientes()
+        public static List<Cliente> Ler()
         {
             var clientes = new List<Cliente>();
-            if (File.Exists(CaminhoBaseClientes()))
+            if (File.Exists(CaminhoBase()))
             {
-                using (StreamReader arquivo = File.OpenText(CaminhoBaseClientes()))
+                using (StreamReader arquivo = File.OpenText(CaminhoBase()))
                 {
                     string linha;
                     int i = 0;
